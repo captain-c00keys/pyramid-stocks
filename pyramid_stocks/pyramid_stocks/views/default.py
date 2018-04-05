@@ -8,19 +8,23 @@ from ..models import MyModel
 
 @view_config(route_name='home', renderer='../templates/index.jinja2')
 def my_view(request):
+    return {}
 
 @view_config(route_name='auth', renderer='../templates/register.jinja2')
 def my_view(request):
+    return {}
 
 @view_config(route_name='stock', renderer='../templates/stock_add.jinja2')
 def my_view(request):
+    return{}
 
 @view_config(route_name='portfolio', renderer='../templates/portfolio.jinja2')
 def my_view(request):
+    return {}
 
 @view_config(route_name='portfolio {symbol}', renderer='../templates/stock_detail.jinja2')
 def my_view(request):
-
+    return {}
 
 
 db_err_msg = """\
