@@ -1,0 +1,25 @@
+{% extends "index.jinja2" %}
+
+  <header>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/auth">Auth</a></li>
+        <li><a href="/entries">Entries</a></li>
+        <li><a href="/new">New</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Portfolio</h1>
+    <p>Welcome to Pyramid Stocks!</p>
+
+    {% block content %}
+    <p>No content</p>
+    {% endblock content %}
+
+  </main>
+</body>
+</html>
+
+{% endblock content %}
