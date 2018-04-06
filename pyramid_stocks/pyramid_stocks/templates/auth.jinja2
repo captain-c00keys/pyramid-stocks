@@ -1,0 +1,32 @@
+{% extends "index.jinja2" %}
+
+{% block content %}
+<h1>Registration</h1>
+<form id="registration-form" method="POST" action="{{request.route_url('auth')}}">
+    <fieldset>
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+    </fieldset>
+    <fieldset>
+            <label for="email">Email:</label>
+            <input type="email" name="email" required>
+        </fieldset>
+    <fieldset>
+        <label for="password">Password:</label>
+        <input type="text" name="password" required>
+    </fieldset>
+    <button class="btn">Login</button>
+</form>
+
+<h1>Sign-In</h1>
+<form
+    id="signin-form"
+    method="GET"
+    action="{{request.route_url('auth')}}">
+
+    <input type="text" name="username">
+    <input type="password" name="password" pattern="[0-9]{8}">
+    <input type="submit" name="submit" value="Sign-In"
+</form>
+
+{% endblock content %}
