@@ -1,21 +1,13 @@
-<!DOCTYPE html>
-    <html>
-        <head>
-            <title>Stock Portfolio</title>
-            <link rel="stylesheet" href="styles/base/rest.css">
-            <link rel="stylesheet" href="styles/base.css">
-            <link rel="stylesheet" href="styles/layout/layout.css">
-            <link rel="stylesheet" href="styles/modules/buttonform.css">
-            <link rel="stylesheet" href="styles/modules/colors.css">
-            <link rel="stylesheet" href="styles/modules/welcome.css">
-            <link rel="stylesheet" href="styles/modules/forms.css">
-            <link rel="stylesheet" href="state/keyframes.css">
-            <link rel="https://fonts.googleapis.com/css?family= #font to be named latter#" rel="stylesheet">
-            <meta charset="UTF8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        </head>
+{% extends "base.jinja2" %}
 
-        <body>
-            
-        </body>
-    </html>
+{% block content %}
+    <h2>Company name: {{stock.companyName}}</h2>
+    <h3>Symbol: {{stock.symbol}}</h3>
+    <p>CEO: {{stock.CEO}}</p>
+    <p>Website:{{stock.website}}</p>
+    <p>Industry: {{stock.industry}}</p>
+    <p>Sector: {{stock.sector}}</p>
+    <p>Exchange: {{stock.exchange}}</p>
+    <p>Issue Type: {{stock.issueType}}</p>
+    <p>Description: {{stock.description}}</p>
+{% endblock content %}
