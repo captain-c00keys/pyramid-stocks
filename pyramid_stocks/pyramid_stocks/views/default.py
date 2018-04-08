@@ -6,7 +6,7 @@ from ..sample_data import MOCK_DATA
 from pyramid.httpexceptions import HTTPFound, HTTPNotFound
 
 @view_config(
-    route_name='home', 
+    route_name='index', 
     renderer='../templates/index.jinja2'
     )
 def my_home_view(request):
@@ -14,7 +14,7 @@ def my_home_view(request):
 
 
 @view_config(
-    route_name='auth', 
+    route_name='auth',
     renderer='../templates/auth.jinja2'
     )
 def my_login_view(request):
@@ -34,7 +34,7 @@ def my_login_view(request):
         password = request.POST['password']
         print('User: {}, Pass: {}, Email: {}'.format(username, password, email))
 
-        return HTTPFound(location=request.route_url('entries'))
+        return HTTPFound(location=request.route_url('stock'))
     return HTTPNotFound()
 
 
@@ -50,7 +50,7 @@ def my_view(request):
 
 
 @view_config(
-    route_name='detail', 
+    route_name='portfolio_symbol', 
     renderer='../templates/stock_detail.jinja2'
     )
 def my_detail_view(request):
@@ -60,7 +60,7 @@ def my_detail_view(request):
 
 
 @view_config(
-    route_name='add', 
+    route_name='stock', 
     renderer='../templates/stock_add.jinja2'
     )
 def my_add_view(request):
