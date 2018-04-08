@@ -34,7 +34,7 @@ def my_login_view(request):
         password = request.POST['password']
         print('User: {}, Pass: {}, Email: {}'.format(username, password, email))
 
-        return HTTPFound(location=request.route_url('entries'))
+        return HTTPFound(location=request.route_url('stock'))
     return HTTPNotFound()
 
 

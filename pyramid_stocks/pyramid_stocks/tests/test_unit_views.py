@@ -81,12 +81,11 @@ def test_default_behavior_of_auth_view(dummy_request):
     assert response == {}
 
 
-def test_post_auth_view(dummy_request):
+def test_post_auth_view(dummy_post_request):
     from pyramid_stocks.views.default import my_login_view
     from pyramid.httpexceptions import HTTPNotFound
 
-    request = dummy_request
-    request.method = 'POST'
+    request = dummy_post_request
     request.POST = {'username': 'dummy', 'email': 'wat@wat.com', 'password': 'pass'}
 
     response = my_login_view(request)
