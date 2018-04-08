@@ -1,4 +1,4 @@
-MOCK_DATA = {
+MOCK_DATA = [
     {
     "symbol": "GE",
     "companyName": "General Electric Company",
@@ -103,8 +103,8 @@ MOCK_DATA = {
     "exchange": "New York Stock Exchange",
     "industry": "Apparel/Footwear",
     "website": "www.underarmour.com",
-    "description": "Under Armour, Inc. engages in the development, marketing, and distributiion of branded performance apparel, footwear, and accessories for men, women, and youth. It operates through the following segments: North America, EMEA, Asia-Pacific, Latin America, and Connected Fitness. The North America segment comprises of U.S. and Canada. The Connected Fitness segment offers digital fitness subscriptions, along with digital advertising through its MapMyFitness, MyFitnessPal and Endomondo. applications. The company was founded by Kevin A. Plank in 1996 and is headquartered in Baltimore, MD.
+    "description": "Under Armour, Inc. engages in the development, marketing, and distributiion of branded performance apparel, footwear, and accessories for men, women, and youth. It operates through the following segments: North America, EMEA, Asia-Pacific, Latin America, and Connected Fitness. The North America segment comprises of U.S. and Canada. The Connected Fitness segment offers digital fitness subscriptions, along with digital advertising through its MapMyFitness, MyFitnessPal and Endomondo. applications. The company was founded by Kevin A. Plank in 1996 and is headquartered in Baltimore, MD.",
     "issueType": "cs",
     "sector": "Consumer Non-Durables"
     }, 
-}
+]

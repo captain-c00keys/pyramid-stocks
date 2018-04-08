@@ -1,18 +1,20 @@
-{% extends "index.jinja2" %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Stock Portfolio</title>
 
   <header>
     <nav>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/auth">Auth</a></li>
-        <li><a href="/entries">Entries</a></li>
-        <li><a href="/new">New</a></li>
+        <li><a href="{{request.route_url('index')}}">Home</a></li>
+        <li><a href="{{request.route_url('auth')}}">Login/Register</a></li>
+        <li><a href="{{request.route_url('portfolio')}}">Portfolio</a></li>
+        <li><a href="{{request.route_url('stock')}}">Add Stock</a></li>
       </ul>
     </nav>
   </header>
   <main>
-    <h1>Portfolio</h1>
-    <p>Welcome to Pyramid Stocks!</p>
 
     {% block content %}
     <p>No content</p>
@@ -22,4 +24,3 @@
 </body>
 </html>
 
-{% endblock content %}

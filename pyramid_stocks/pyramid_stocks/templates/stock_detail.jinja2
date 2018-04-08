@@ -1,13 +1,15 @@
 {% extends "base.jinja2" %}
 
 {% block content %}
-    <h2>Company name: {{stock.companyName}}</h2>
-    <h3>Symbol: {{stock.symbol}}</h3>
-    <p>CEO: {{stock.CEO}}</p>
-    <p>Website:{{stock.website}}</p>
-    <p>Industry: {{stock.industry}}</p>
-    <p>Sector: {{stock.sector}}</p>
-    <p>Exchange: {{stock.exchange}}</p>
-    <p>Issue Type: {{stock.issueType}}</p>
-    <p>Description: {{stock.description}}</p>
+<ul id="stock detail">
+    <li>Company name: {{stock.companyName}}</h2>
+    <li>Symbol: {{stock.symbol}}</li>
+    <li>CEO: {{stock.CEO}}</li>
+    <li>Website:{{stock.website}}</li>
+    <li>Industry: {{stock.industry}}</li>
+    <li>Sector: {{stock.sector}}</li>
+    <li>Exchange: {{stock.exchange}}</li>
+    <li>Issue Type: {{stock.issueType}}</li>
+    <li>Description: {{stock.description}}</li>
+</ul>
 {% endblock content %}

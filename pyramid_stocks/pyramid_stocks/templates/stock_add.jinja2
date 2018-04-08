@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 {% extends "base.jinja2" %}
 
+
+<h1>Please enter your stock purchases</h1>
     {% block content %}
+    <form action="{{request.route_url('stock')}}" method="GET" id="customer-info">
 
-    <h1>Please enter your stock purchases</h1>
-
-    <form id="customer-info">
-        <fieldset>
-            <legend id="legend">Customer Information</legend>
-
-            <label for="custFirstName">Stock name</label>
-            <input name="custFirstName" id="fn" type="text">
-            <label for="custLastname">Styock Symbol</label>
-            <input name="custLastName" id="ln" type="text"><br/>
-            <label for="creditCardNumber">Number of shares to purchase</label>
-            <input for="creditCardNumber" id="cc" type="number"><br/>
+            <label for="stockName">Stock name</label>
+            <input name="stockName" id="add-name" type="text"><br>
+            <label for="stockSymbol">Stock Symbol</label>
+            <input name="stockSymbol" id="add-symbol" type="text"><br/>
+            <label for="purchaseShares">Number of shares to purchase</label>
+            <input for="purchaseShares" id="add-shares" type="number"><br/>
             <button id="register">Purchase</button>
 
         </fieldset>
     </form>
 
+    {% if company %}
+    <div>
+        {{company}}
+    </div>
+    {% endif %}
     {% endblock content %}

@@ -7,8 +7,10 @@
   {% for entry in entries %}
   <li>
     <h2>{{entry.companyName}}</h2>
-    <p>({{entry.symbol}}) {{entry.website}}</p>
-    <p><a href="{{request.route_url('detail', symbol=entry.symbol)}}">view details</a></p>
+    <h3>({{entry.symbol}}) {{entry.website}}</h3>
+    <p>
+      <a href="{{request.route_url('portfolio_symbol', symbol=entry.symbol)}}">View Details</a>
+    </p>
   </li>
   {% endfor %}
 </ul>
