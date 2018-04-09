@@ -17,6 +17,17 @@
         </fieldset>
     </form>
 
+    <form action="{{request.route_url('stock')}}"></form>
+        <input type="text" name="companyName" value={{company.companyName}} hidden required>
+        <input type="text" name="symbol" value={{}} hidden required>
+        <input type="text" name="exchange" value={{}} hidden>
+        <input type="text" name="website" value={{}} hidden>
+        <input type="text" name="CEO" value={{}} hidden>
+        <input type="text" name="industry" value={{}} hidden>
+        <input type="text" name="sector" value={{}} hidden>
+        <input type="text" name="issueType" value={{}} hidden>
+        <input type="text" name="description" value={{}} hidden>
+
     {% if company %}
     <div>
         {{company}}

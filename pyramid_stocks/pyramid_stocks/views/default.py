@@ -4,6 +4,9 @@ from sqlalchemy.exc import DBAPIError
 from ..models import MyModel
 from ..sample_data import MOCK_DATA
 from pyramid.httpexceptions import HTTPFound, HTTPNotFound
+import requests
+
+iex = ('https://api.iextrading.com/1.0')
 
 @view_config(
     route_name='index', 
@@ -63,8 +66,32 @@ def my_detail_view(request):
     route_name='stock', 
     renderer='../templates/stock_add.jinja2'
     )
+
 def my_add_view(request):
-    return{}
+    symbol = request.matchdict['symbol']
+    response = request.get(iex + f'stock/{ symbol }/company')
+    if request.method == 'POST':
+        fields = ['companyName', 'symbol', 'exchange', 'website', 'CEO', 'industry', 'sector', 'issueType', 'description']
+
+        if not all([field in request.POST for field in fields]):
+            return HTTPBadRequest()
+
+        stock = {
+        'companyName': request.POST['companyName']
+        'symbol': request.POST['symbol'],
+        'exchange': request.POST['exchange'],
+        'website': request.POST['website']
+        'CEO': request.POST['CEO']
+        'industry': request.POST['industry']
+        'sector': request.POST['sector']
+        'issueType': request.POST['issueType']
+        'description': request.POST['description']
+        }
+
+    if request.method == 'GET':
+        try:
+            symbol = request
+    return{response}
 
 db_err_msg = """\
 Pyramid is having a problem using your SQL database.  The problem
