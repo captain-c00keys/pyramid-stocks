@@ -14,7 +14,7 @@ API_URL = ('https://api.iextrading.com/1.0')
     request_method='GET'
     )
 def my_home_view(request):
-    return {}
+    return {} 
 
 
 @view_config(
