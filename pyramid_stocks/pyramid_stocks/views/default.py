@@ -62,8 +62,9 @@ def my_view(request):
     request_method = 'GET'
     )
 def my_detail_view(request):
+    symbol = request.matchdict['symbol']
     for stock in MOCK_DATA:
-        if stock['symbol'] == request.matchdict['symbol']:
+        if stock['symbol'] == symbol:
             return {'stock': stock}
 
 
@@ -73,8 +74,6 @@ def my_detail_view(request):
     )
 
 def my_add_view(request):
-    symbol = request.matchdict['symbol']
-    response = request.get(API_URL + f'stock/{ symbol }/company')
     if request.method == 'POST':
         fields = ['companyName', 'symbol']
 
@@ -104,6 +103,7 @@ def my_add_view(request):
         except KeyError:
             return{}
 
+        response = requests.get(API_URL + '/stock/{}/company'.format(symbol))
         data = response.json()
         return {'company': data}
 
