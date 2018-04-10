@@ -22,7 +22,7 @@ def my_home_view(request):
     renderer='../templates/auth.jinja2'
     )
 def my_login_view(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
         try:
             username = request.GET['username']
             email = request.POST['email']
@@ -33,7 +33,8 @@ def my_login_view(request):
 
         except KeyError:
             return {}
-    if request.method == 'GET':
+
+    if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
@@ -57,11 +58,13 @@ def my_view(request):
 
 @view_config(
     route_name='portfolio_symbol', 
-    renderer='../templates/stock_detail.jinja2'
+    renderer='../templates/stock_detail.jinja2',
+    request_method = 'GET'
     )
 def my_detail_view(request):
+    symbol = request.matchdict['symbol']
     for stock in MOCK_DATA:
-        if stock['symbol'] == request.matchdict['symbol']:
+        if stock['symbol'] == symbol:
             return {'stock': stock}
 
 
@@ -71,8 +74,6 @@ def my_detail_view(request):
     )
 
 def my_add_view(request):
-    symbol = request.matchdict['symbol']
-    response = request.get(API_URL + f'stock/{ symbol }/company')
     if request.method == 'POST':
         fields = ['companyName', 'symbol']
 
@@ -102,6 +103,7 @@ def my_add_view(request):
         except KeyError:
             return{}
 
+        response = requests.get(API_URL + '/stock/{}/company'.format(symbol))
         data = response.json()
         return {'company': data}
 
