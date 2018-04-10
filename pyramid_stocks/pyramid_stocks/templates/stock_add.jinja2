@@ -3,34 +3,29 @@
 
 
 <h1>Please enter your stock purchases</h1>
-    {% block content %}
-    <form action="{{request.route_url('stock')}}" method="GET" id="customer-info">
+{% block content %}
+<form action="{{request.route_url('stock')}}" method="GET" id="customer-info">
+    <input type="text" name="symbol" placeholder="MSFT">
+    <button type="submit">Search</button>
+</form>
 
-            <label for="stockName">Stock name</label>
-            <input name="stockName" id="add-name" type="text"><br>
-            <label for="stockSymbol">Stock Symbol</label>
-            <input name="stockSymbol" id="add-symbol" type="text"><br/>
-            <label for="purchaseShares">Number of shares to purchase</label>
-            <input for="purchaseShares" id="add-shares" type="number"><br/>
-            <button id="register">Purchase</button>
-
-        </fieldset>
+{% if company %}
+    <form action="{{request.route_url('stock')}}" method="POST">
+        <input type="text" name="companyName" value={{company.companyName}} hidden required readonly>
+        <input type="text" name="symbol" value={{company.symbol}} hidden required readonly>
+        <input type="text" name="exchange" value={{company.exchange}} hidden readonly>
+        <input type="text" name="website" value={{company.website}} hidden readonly>
+        <input type="text" name="CEO" value={{company.CEO}} hidden readonly>
+        <input type="text" name="industry" value={{company.industry}} hidden readonly>
+        <input type="text" name="sector" value={{company.sector}} hidden readonly>
+        <input type="text" name="issueType" value={{company.issueType}} hidden readonly>
+        <input type="text" name="description" value={{company.description}} hidden readonly>
+        <button type="submit">Add To Portfolio</button>
     </form>
 
-    <form action="{{request.route_url('stock')}}"></form>
-        <input type="text" name="companyName" value={{company.companyName}} hidden required>
-        <input type="text" name="symbol" value={{}} hidden required>
-        <input type="text" name="exchange" value={{}} hidden>
-        <input type="text" name="website" value={{}} hidden>
-        <input type="text" name="CEO" value={{}} hidden>
-        <input type="text" name="industry" value={{}} hidden>
-        <input type="text" name="sector" value={{}} hidden>
-        <input type="text" name="issueType" value={{}} hidden>
-        <input type="text" name="description" value={{}} hidden>
-
-    {% if company %}
     <div>
         {{company}}
     </div>
+
     {% endif %}
     {% endblock content %}

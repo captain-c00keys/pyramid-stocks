@@ -2,14 +2,14 @@
 
 {% block content %}
 <ul id="stock detail">
-    <li>Company name: {{stock.companyName}}</h2>
-    <li>Symbol: {{stock.symbol}}</li>
-    <li>CEO: {{stock.CEO}}</li>
-    <li>Website:{{stock.website}}</li>
-    <li>Industry: {{stock.industry}}</li>
-    <li>Sector: {{stock.sector}}</li>
-    <li>Exchange: {{stock.exchange}}</li>
-    <li>Issue Type: {{stock.issueType}}</li>
-    <li>Description: {{stock.description}}</li>
+    <li id="volume">Name of Company: {{stock.companyName}}</h2>
+    <li id="price">Symbol: {{stock.symbol}}</li>
+    <li id="closing">CEO: {{stock.CEO}}</li>
+    <li id="change">Website: {{stock.website}}</li>
+    <li id="opening price">Industry: {{stock.industry}}</li>
+    <li id="closing price">Sector: {{stock.sector}}</li>
+    <li id="closing price">Exchange: {{stock.exchange}}</li>
+    <li id="closing price">Issue Type: {{stock.issueType}}</li>
+    <li id="closing price">Description: {{stock.description}}</li>
 </ul>
 {% endblock content %}

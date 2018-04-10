@@ -9,7 +9,7 @@
     <h2>{{entry.companyName}}</h2>
     <h3>({{entry.symbol}}) {{entry.website}}</h3>
     <p>
-      <h5><a href="{{ request.route_url('portfolio_symbol', symbol=entry.symbol) }}">{{ entry.companyName }}</a></h5>
+      <h5><a href="{{request.route_url('portfolio_symbol', symbol=entry.symbol)}}">{{entry.companyName}}</a></h5>
     </p>
   </li>
   {% endfor %}
