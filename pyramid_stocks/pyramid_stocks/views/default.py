@@ -22,7 +22,7 @@ def my_home_view(request):
     renderer='../templates/auth.jinja2'
     )
 def my_login_view(request):
-    if request.method == 'POST':
+    if request.method == 'GET':
         try:
             username = request.GET['username']
             email = request.POST['email']
@@ -33,7 +33,8 @@ def my_login_view(request):
 
         except KeyError:
             return {}
-    if request.method == 'GET':
+
+    if request.method == 'POST':
         username = request.POST['username']
         email = request.POST['email']
         password = request.POST['password']
@@ -57,7 +58,8 @@ def my_view(request):
 
 @view_config(
     route_name='portfolio_symbol', 
-    renderer='../templates/stock_detail.jinja2'
+    renderer='../templates/stock_detail.jinja2',
+    request_method = 'GET'
     )
 def my_detail_view(request):
     for stock in MOCK_DATA:
