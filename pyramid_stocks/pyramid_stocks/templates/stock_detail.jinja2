@@ -1,6 +1,7 @@
 {% extends "base.jinja2" %}
 
 {% block content %}
+{% if entries %}
 <ul id="stock detail">
     <li id="volume">Name of Company: {{stock.companyName}}</h2>
     <li id="price">Symbol: {{stock.symbol}}</li>

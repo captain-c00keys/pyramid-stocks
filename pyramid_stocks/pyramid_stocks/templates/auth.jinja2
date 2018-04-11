@@ -8,6 +8,7 @@
     method="POST" 
     action="{{request.route_url('auth')}}">
     
+    <input type="hidden" name="csrf_token" value="{{request.session.get_csrf_token()}}">
     <input type="text" name="username" placeholder="username">
     <input type="email" name="email" placeholder="email">
     <input type="password" name="password" placeholder="password">
@@ -19,7 +20,7 @@
     id="signin-form"
     method="GET"
     action="{{request.route_url('auth')}}">
-
+    <input type="hidden" name="csrf_token" value="{{request.session.get_csrf_token()}}">
     <input type="text" name="username">
     <input type="password" name="password" placeholder="password" pattern="[0-9]{8}">
     <input type="submit" name="submit" value="Sign-In">
