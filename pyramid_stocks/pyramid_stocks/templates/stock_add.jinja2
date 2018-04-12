@@ -6,12 +6,12 @@
 {% block content %}
 <form action="{{request.route_url('stock')}}" method="GET" id=" search">
     <input type="text" name="symbol" placeholder="MSFT">
-    <input type="hidden" name="csrf_token" value="{{request.session.get_csrf_token()}}">
     <button type="submit">Search</button>
 </form>
 
-{% if company %}
 <form class="add_form" method="POST">
+    {% if company %}
+
         <section class="symbol">
           <h2>{{company.companyName}}</h2>
           <p>{{company.exchange}}</p>
@@ -24,8 +24,8 @@
       </section>
       <input type="submit" value="Add to Portfolio">
       <input type="hidden" value={{company.symbol}} name="symbol">
-      <input type="hidden" name="csrf_token" value="{{request.session.get_csrf_token()}}">
-      </form>
+      <input type="hidden" name="csrf_token">
+</form>
 
     {% endif %}
     {% endblock content %}

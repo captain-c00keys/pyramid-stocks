@@ -23,7 +23,7 @@ class Account(Base):
     registered_on = Column(DateTime, nullable=False)
     admin = Column(Boolean, nullable=False, default=False)
 
-    def __init__(self, username, email, password, admin=False):
+    def __init__(self, username, email, password, registered_on, admin=False):
         self.username = username
         self.email = email
         self.password = manager.encode(password, 10)

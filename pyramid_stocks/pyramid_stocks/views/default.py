@@ -1,7 +1,7 @@
 from pyramid.response import Response
 from pyramid.view import view_config
 from sqlalchemy.exc import DBAPIError
-from ..models import MyModel
+from ..models import Entry
 from ..sample_data import MOCK_DATA
 from pyramid.httpexceptions import HTTPFound, HTTPNotFound
 import requests
@@ -38,9 +38,7 @@ def my_detail_view(request):
     route_name='stock',
     renderer='../templates/stock_add.jinja2')
 def stock_view(request):
-    """
-    Render a stock picker view.
-    """
+
 
     if request.method == 'POST':
 
@@ -50,19 +48,20 @@ def stock_view(request):
         response = requests.get('{}/stock/{}/company'.format(API_URL, symbol))
         if response.status_code == 200:
             try:
-                query = request.dbsession.query(Stock)
-                stock = query.filter(Stock.symbol == symbol).one_or_none()
+                query = request.dbsession.query(Entry)
+                stock = query.filter(Entry.symbol == symbol).one_or_none()
             except DBAPIError:
                 return DBAPIError(
                     DB_ERR_MSG, content_type='text/plain', status=500)
             if stock is None:
-                request.dbsession.add(Stock(**response.json()))
+                request.dbsession.add(Entry(**response.json()))
             else:
                 for key, value in response.json().items():
                     setattr(stock, key, value)
             return HTTPFound(location=request.route_url('portfolio'))
         return HTTPNotFound()
     try:
+        # import pdb; pdb.set_trace()
         symbol = request.GET['symbol']
     except KeyError:
         return {}
@@ -73,91 +72,13 @@ def stock_view(request):
                 symbol.upper()
             } is not available: ({
                 request.text
-            })'''}
+            })'''
+            }
     if response.status_code == 200:
         return {
             'company': response.json()
         }
 
-# @view_config(
-#     route_name='auth',
-#     renderer='../templates/auth.jinja2'
-#     )
-# def my_login_view(request):
-#     if request.method == 'GET':
-#         try:
-#             username = request.GET['username']
-#             email = request.POST['email']
-#             password = request.GET['password']
-#             print('User: {}, Pass: {}'.format(username, password))
-
-#             return HTTPFound(location=request.route_url('portfolio'))
-
-#         except KeyError:
-#             return {}
-
-#     if request.method == 'POST':
-#         username = request.POST['username']
-#         email = request.POST['email']
-#         password = request.POST['password']
-#         print('User: {}, Pass: {}, Email: {}'.format(username, password, email))
-
-#         return HTTPFound(location=request.route_url('stock'))
-#     return HTTPNotFound()
-
-
-
-# @view_config(
-#     route_name='portfolio', 
-#     renderer='../templates/portfolio.jinja2',
-#     request_method='GET'
-#     )
-# def my_view(request):
-#     return {
-#         'entries': MOCK_DATA
-#     }
-
-# @view_config(
-#     route_name='stock', 
-#     renderer='../templates/stock_add.jinja2'
-#     )
-
-# def my_add_view(request):
-#     if request.method == 'POST':
-#         fields = ['companyName', 'symbol']
-
-#         if not all([field in request.POST for field in fields]):
-#             return HTTPBadRequest()
-#         try:
-#             stock = {
-#                 'companyName': request.POST['companyName'],
-#                 'symbol': request.POST['symbol'],
-#                 'exchange': request.POST['exchange'],
-#                 'website': request.POST['website'],
-#                 'CEO': request.POST['CEO'],
-#                 'industry': request.POST['industry'],
-#                 'sector': request.POST['sector'],
-#                 'issueType': request.POST['issueType'],
-#                 'description': request.POST['description'],
-#             }
-#         except KeyError:
-#             pass
-
-#         MOCK_DATA.append(stock)
-#         return HTTPFound(location=request.route_url('portfolio'))
-
-#     if request.method == 'GET':
-#         try:
-#             symbol = request.GET['symbol']
-#         except KeyError:
-#             return{}
-
-#         response = requests.get(API_URL + '/stock/{}/company'.format(symbol))
-#         data = response.json()
-#         return {'company': data}
-
-#     else:
-#         raise HTTPFound()
 
 db_err_msg = """\
 Pyramid is having a problem using your SQL database.  The problem

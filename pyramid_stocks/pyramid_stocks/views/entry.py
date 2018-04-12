@@ -2,7 +2,7 @@ from pyramid.httpexceptions import HTTPNotFound, HTTPFound, HTTPBadRequest
 from pyramid.response import Response
 from pyramid.view import view_config
 from sqlalchemy.exc import DBAPIError
-from ..models import Stock
+from ..models import Entry
 from . import DB_ERR_MSG
 import requests
 import os
@@ -16,7 +16,7 @@ API_KEY = os.environ.get('API_KEY', '')
              request_method='GET')
 def entries_view(request):
     try:
-        query = request.dbsession.query(Stock)
+        query = request.dbsession.query(Entry)
         all_entries = query.all()
     except DBAPIError:
         return Response(DB_ERR_MSG, content_type='text/plain', status=500)

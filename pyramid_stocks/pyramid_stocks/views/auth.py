@@ -12,9 +12,7 @@ from . import DB_ERR_MSG
     renderer='../templates/auth.jinja2',
     permission=NO_PERMISSION_REQUIRED)
 def my_login_view(request):
-    """
-    Render a login view. tested
-    """
+
     if request.method == 'POST':
         try:
             username = request.POST['username']

@@ -10,7 +10,7 @@ from sqlalchemy import (
 from .meta import Base
 
 
-class MyModel(Base):
+class Entry(Base):
     __tablename__ = 'models'
     id = Column(Integer, primary_key=True)
     symbol = Column(Text, nullable=False, unique=True)
@@ -24,4 +24,4 @@ class MyModel(Base):
     description = Column(Text)
     
 
-Index('my_index', MyModel.name, unique=True, mysql_length=255)
+Index('my_index', Entry.id, unique=True, mysql_length=255)
