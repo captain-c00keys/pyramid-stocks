@@ -1,5 +1,0 @@
-{
-  "pyramid_stocks/pyramid_stocks/tests/test_unit_views.py::TestMyViewFailureCondition::test_failing_view": true,
-  "pyramid_stocks/pyramid_stocks/tests/test_unit_views.py::TestMyViewSuccessCondition::test_passing_view": true,
-  "pyramid_stocks/pyramid_stocks/tests/test_unit_views.py::test_post_auth_view": true
-}
