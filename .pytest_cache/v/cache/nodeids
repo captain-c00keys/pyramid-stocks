@@ -1,6 +1,0 @@
-[
-  "pyramid_stocks/pyramid_stocks/tests/test_unit_views.py::test_default_behavior_of_home_view",
-  "pyramid_stocks/pyramid_stocks/tests/test_unit_views.py::test_default_behavior_of_auth_view",
-  "pyramid_stocks/pyramid_stocks/tests/test_unit_views.py::test_post_auth_view",
-  "pyramid_stocks/pyramid_stocks/tests/test_unit_views.py::test_default_behavior_of_portfolio_view"
-]

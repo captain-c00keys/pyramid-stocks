@@ -1,0 +1,6 @@
+[console_scripts]
+initialize_pyramid_stocks_db = pyramid_stocks.scripts.initializedb:main
+
+[paste.app_factory]
+main = pyramid_stocks:main
+
