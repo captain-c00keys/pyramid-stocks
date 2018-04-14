@@ -26,7 +26,7 @@ def my_login_view(request):
             instance = Account(
                 username=username,
                 email=email,
-                password=password,
+                password=password
             )
 
             headers = remember(request, userid=instance.username)

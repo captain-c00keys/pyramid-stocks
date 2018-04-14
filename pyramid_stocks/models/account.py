@@ -38,7 +38,8 @@ class Account(Base):
         is_authenticated = False
 
         query = request.dbsession.query(cls).filter(
-            cls.username == username).one_or_none()
+        cls.username == username).one_or_none()
+
 
         if query is not None:
             if manager.check(query.password, password):
