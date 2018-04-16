@@ -5,9 +5,9 @@ development.ini
 production.ini
 pytest.ini
 requirements.txt
+runtime.txt
 pyramid_stocks/__init__.py
 pyramid_stocks/routes.py
-pyramid_stocks/security.py
 pyramid_stocks.egg-info/PKG-INFO
 pyramid_stocks.egg-info/SOURCES.txt
 pyramid_stocks.egg-info/dependency_links.txt
