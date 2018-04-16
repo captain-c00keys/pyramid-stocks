@@ -16,7 +16,7 @@ from ..models import (
     get_session_factory,
     get_tm_session,
     )
-from ..models import Entry
+from ..models.mymodel import Entry
 
 
 def usage(argv):
@@ -42,5 +42,5 @@ def main(argv=sys.argv):
     with transaction.manager:
         dbsession = get_tm_session(session_factory, transaction.manager)
 
-        model = Entry(name='one', value=1)
+        model = Entry()
         dbsession.add(model)

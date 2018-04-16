@@ -13,7 +13,7 @@ from .meta import Base
 class Entry(Base):
     __tablename__ = 'models'
     id = Column(Integer, primary_key=True)
-    symbol = Column(Text, nullable=False, unique=True)
+    symbol = Column(Text, nullable=False)
     companyName = Column(Text)
     exchange = Column(Text)
     website = Column(Text)
